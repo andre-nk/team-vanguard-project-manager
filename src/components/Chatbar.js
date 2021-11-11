@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Chatbar() {
   return (
-    <div className="h-screen flex flex-col justify-between top-0 left-0 bg-white border-l border-black-border">
-      
+    <div className="bg-red-300 p-8 w-4/12">
+      <h2>Kontoladon</h2>
     </div>
   );
 }

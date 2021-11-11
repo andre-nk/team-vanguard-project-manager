@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { authTools } from '../firebase/config'
+import { authTools, storageTools, firestoreTools } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 
 export const useSignup = () => {
@@ -8,7 +8,7 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState(false)
   const { dispatch } = useAuthContext()
 
-  const signup = async (email, password, displayName) => {
+  const signup = async (email, password, displayName, profilePicture) => {
     setError(null)
     setIsPending(true)
   
@@ -20,8 +20,21 @@ export const useSignup = () => {
         throw new Error('Could not complete signup')
       }
 
+      // upload user profile picture
+      const uploadPath = `users/${res.user.uid}/${profilePicture.name}`
+      const imageResult = await storageTools.ref(uploadPath).put(profilePicture);
+      const imageUrl = await imageResult.ref.getDownloadURL();
+
+
       // add display name to user
-      await res.user.updateProfile({ displayName })
+      await res.user.updateProfile({ displayName, photoURL: imageUrl })
+
+      // create user document
+      await firestoreTools.collection('users').doc(res.user.uid).set({
+        online: true,
+        displayName,
+        photoURL: imageUrl,
+      })
 
       // dispatch login action
       dispatch({ type: 'LOGIN', payload: res.user })

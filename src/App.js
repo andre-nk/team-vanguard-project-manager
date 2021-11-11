@@ -9,34 +9,32 @@ import Chatbar from "./components/Chatbar";
 
 function App() {
   return (
-    <div className="flex w-full">
-      <div className="w-72">
-        <Sidebar />
-      </div>
-      <div className="w-full">
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/">
-              <Dashboard />
-            </Route>
-            <Route path="/create">
-              <Create />
-            </Route>
-            <Route path="/projects/:id">
-              <Project />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/register">
-              <Register />
-            </Route>
-          </Switch>
-        </BrowserRouter>
-      </div>
-      <div className="w-4/12">
-        <Chatbar />
-      </div>
+    <div className="">
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <div className="flex">
+              <Sidebar />
+              <div className="w-full">
+                <Dashboard />
+              </div>
+              <Chatbar />
+            </div>
+          </Route>
+          <Route path="/create">
+            <Create />
+          </Route>
+          <Route path="/projects/:id">
+            <Project />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
