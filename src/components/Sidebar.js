@@ -1,11 +1,19 @@
 import React from "react";
+import { useLogout } from "../hooks/useLogout";
 
 export default function Sidebar() {
+  const { logout, error, isPending } = useLogout();
+
   return (
     <div className="h-screen flex flex-col justify-between top-0 left-0 bg-white-sub border-r border-black-border">
       <div>
         <div className="px-6">
-          <img src="/logo-text.png" width="280px" alt="logo" className="pt-8 pb-6" />
+          <img
+            src="/logo-text.png"
+            width="280px"
+            alt="logo"
+            className="pt-8 pb-6"
+          />
         </div>
         <div className="flex items-center space-x-3.5 justify-start py-2 px-6 hover:bg-black-surface duration-200">
           <div className="relative inline-block">
@@ -20,9 +28,11 @@ export default function Sidebar() {
         </div>
       </div>
       <div className="w-full h-10 flex justify-center items-center hover:bg-white-main border-t border-black-border duration-200">
-        <button>
+        {!isPending && (
+          <button onClick={logout}>
             <p className="text-caption">Sign out</p>
-        </button>
+          </button>
+        )}
       </div>
     </div>
   );

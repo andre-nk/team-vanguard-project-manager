@@ -41,21 +41,37 @@ export default function Register() {
   return (
     <div className="min-w-full h-screen bg-white-sub flex items-center justify-center">
       <div className="py-8 px-8 bg-white-main rounded-lg shadow-xl">
+        <div className="flex justify-center items-center pb-6">
+          <img src="/logo-text.png" width="156px" alt="logo" />
+        </div>
+        <h2 className="text-heading-2 font-medium self-center text-center pb-6">
+          Register your account
+        </h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>
-          <label className="self-center mb-8">
-            <img
-              className="inline-block object-cover h-14 w-14 rounded-md pt-2 px-1 pb-0 bg-primary-light hover:bg-black-surface duration-200 cursor-pointer"
-              src="https://avatars.dicebear.com/api/micah/seed.svg"
-              alt="profile"
-            />
-            <input type="file" className="hidden" onChange={handleFileInput} />
-          </label>
+          <div className="border rounded-md px-4 py-3.5 mb-4 outline-none hover:border-primary-border border-black-border">
+            <label>
+              <input
+                type="file"
+                onChange={handleFileInput}
+                className="hidden"
+              />
+              <p className="font-light text-gray-main text-caption text-center select-none duration-200">
+                {
+                  profilePicture !== null
+                  ? profilePicture.name.length >= 25
+                    ? "Profile picture: " + profilePicture.name.substring(0, 25) + "..."
+                    : "Profile picture: " + profilePicture.name
+                  : "Choose a profile picture (size < 1 MB)"
+                }
+              </p>
+            </label>
+          </div>
           <input
             type="text"
             name="displayName"
             id="displayName"
             value={displayName}
-            className="outline-none border focus:border-primary-border border-black-border focus:border-primary-blue rounded-md flex-1 px-4 py-3.5 duration-200 mb-4"
+            className="outline-none border focus:border-primary-border border-black-border rounded-md flex-1 px-4 py-3.5 duration-200 mb-4"
             placeholder="Your name..."
             onChange={(value) => {
               setDisplayName(value.target.value);
@@ -108,7 +124,9 @@ export default function Register() {
             }
           </div>
           {isPending ? (
-            <p className="font-light text-gray-main self-center py-8">Loading...</p>
+            <p className="font-light text-gray-main self-center py-8">
+              Loading...
+            </p>
           ) : error ? (
             <p className="font-light text-danger-light py-8">{error}</p>
           ) : (
@@ -118,7 +136,7 @@ export default function Register() {
           )}
           <p className="text-gray-main self-center font-light">
             Already have an account?
-            <Link to="/register">
+            <Link to="/login">
               <span className="underline pl-1 hover:text-secondary-light  duration-200">
                 Sign in!
               </span>
