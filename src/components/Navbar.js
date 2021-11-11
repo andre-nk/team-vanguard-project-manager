@@ -11,17 +11,19 @@ export default function Navbar() {
   console.log(isTabActive);
 
   return (
-    <div className="flex-col w-full py-8 space-y-4">
+    <div className="flex-col w-full py-8 pb-2 lg:pb-8 lg:space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-heading-1 font-semibold">Dashboard</h2>
-        <button className="flex items-center space-x-3 bg-white-main hover:bg-white-sub hover:shadow-sm duration-200 border border-black-border rounded-md px-3 py-2">
+        <h2 className="text-heading-3 lg:text-heading-1 font-semibold">
+          Dashboard
+        </h2>
+        <button className="flex items-center px-2.5 py-1.5 lg:px-3 lg:py-2 space-x-3 bg-white-main hover:bg-white-sub hover:shadow-sm duration-200 border border-black-border rounded-md">
           <img src="/quill-icons/plus.svg" alt="add" />
           <p className="text-caption">New project</p>
         </button>
       </div>
-      <div
-        className={`flex space-x-16 items-center text-body font-light text-gray-main`}
-      >
+
+      {/* LG */}
+      <div className="space-x-16 hidden lg:flex items-center">
         <button className="p-3 rounded-md hover:bg-black-surface duration-200">
           <img src="/quill-icons/hamburger.svg" alt="menu" />
         </button>

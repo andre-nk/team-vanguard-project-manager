@@ -14,11 +14,15 @@ function App() {
         <Switch>
           <Route exact path="/">
             <div className="flex">
-              <Sidebar />
+              <div className="hidden lg:block">
+                <Sidebar />
+              </div>
               <div className="w-full">
                 <Dashboard />
               </div>
-              <Chatbar />
+              <div className="hidden lg:block">
+                <Chatbar width="w-4/12" />
+              </div>
             </div>
           </Route>
           <Route path="/create">
