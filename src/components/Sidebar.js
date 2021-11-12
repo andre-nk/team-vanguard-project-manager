@@ -8,12 +8,10 @@ export default function Sidebar({ isSidebarActive }) {
 
   return (
     <div
-      className={`h-screen flex flex-col justify-between top-0 left-0 bg-white-sub border-r border-black-border ${
-        isSidebarActive ? "block" : "block"
-      }`}
+      className={`h-screen flex flex-col justify-between top-0 left-0 bg-white-sub border-r border-black-border`}
     >
       <div>
-        <div className={isSidebarActive ? "px-6" : "px-2 mx-1"}>
+        <div className={isSidebarActive ? "px-6 block" : "px-2 mx-1 hidden lg:flex"}>
           <img
             src={isSidebarActive ? "/logo-text.png" : "/logo-single.png"}
             width="280px"

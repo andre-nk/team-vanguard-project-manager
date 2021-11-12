@@ -31,26 +31,32 @@ function App() {
           <Switch>
             <Route exact path="/">
               {!user && <Redirect to="/login" />}
-              {/* SIDEBAR */}
-              <div>
-                <div
-                  className={`fixed left-0 top-0 z-50 ${
-                    isSidebarOpen ? "w-3/12" : "w-0"
-                  } duration-200`}
-                >
-                  <Sidebar isSidebarActive={isSidebarOpen} />
+              <div className="flex lg:block">
+                <div className={`flex fixed top-0 z-40 ${isSidebarOpen ? "w-full" : "w-0"}`}>
+                  <div
+                    className={`fixed top-0 left-0 bottom-0 lg:hidden z-50 shadow-xl backdrop-filter ${
+                      isSidebarOpen ? "w-8/12" : "w-0"
+                    } duration-200`}
+                  >
+                    <Sidebar isSidebarActive={isSidebarOpen} />
+                  </div>
+                  <div
+                    className={`fixed top-0 right-0 lg:hidden bg-black-main opacity-50 z-50 ${
+                      isSidebarOpen ? "w-4/12 h-screen" : "w-0"
+                    } duration-200`}
+                    onClick={() => setIsSidebarOpen(false)}
+                  >
+                    <span className="opacity-0 w-full h-full bg-black-main"></span>
+                  </div>
                 </div>
-                <div className="flex">
-                  {isSidebarOpen && (
-                    // SIDEBAR
-                    <div
-                      className={`block ${
-                        isSidebarOpen ? "w-3/12" : "w-20"
-                      } duration-200`}
-                    >
-                      <Sidebar isSidebarActive={isSidebarOpen} />
-                    </div>
-                  )}
+                <div className="w-full flex">
+                  <div
+                    className={`hidden lg:flex ${
+                      isSidebarOpen ? "w-3/12" : "w-20"
+                    } duration-200`}
+                  >
+                    <Sidebar isSidebarActive={isSidebarOpen} />
+                  </div>
                   {/* MAIN */}
                   <div className="w-full mx-6 lg:mx-8">
                     <div className="flex-col w-full pt-8 pb-4 lg:space-y-4">
