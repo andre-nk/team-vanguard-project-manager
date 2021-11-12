@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function Chatbar(width) {
+export default function Chatbar() {
   return (
-    <div className={`border-l h-screen border-black-border p-8 ${width}`}>
+    <div className={`h-screen border-l border-black-border lg:w-4/12`}>
       <h2>Kontoladon</h2>
     </div>
   );
