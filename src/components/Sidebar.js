@@ -24,7 +24,7 @@ export default function Sidebar({ isSidebarActive }) {
             <div className="flex items-center space-x-3.5 justify-start py-2 px-6 hover:bg-black-surface duration-200">
               <div className="relative inline-block">
                 <img
-                  className="inline-block object-cover w-10 h-9 rounded-md bg-primary-surface"
+                  className="inline-block object-cover w-9 h-9 rounded-md bg-primary-surface"
                   src={user.photoURL}
                   alt="profile"
                 />
@@ -38,7 +38,7 @@ export default function Sidebar({ isSidebarActive }) {
             <div className="flex items-center space-x-3.5 justify-start py-2 px-6 hover:bg-black-surface duration-200">
               <div className="relative inline-block">
                 <img
-                  className="inline-block object-cover w-10 h-9 rounded-md pt-1 px-1 pb-0 bg-primary-surface"
+                  className="inline-block object-cover w-9 h-9 rounded-md pt-1 px-1 pb-0 bg-primary-surface"
                   src="https://avatars.dicebear.com/api/micah/seed.svg"
                   alt="profile"
                 />
