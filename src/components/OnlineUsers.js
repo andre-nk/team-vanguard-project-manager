@@ -9,9 +9,13 @@ export default function OnlineUsers({ isSidebarOpen }) {
   return (
     <div className="flex flex-col w-full space-y-4">
       <div className="flex min-w-full justify-between">
+<<<<<<< HEAD
         {
           documents && <h2 className="font-medium text-subtitle">Members ({documents.length})</h2>
         }
+=======
+        <h2 className="font-medium text-subtitle">Members (25)</h2>
+>>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
         <img src="/quill-icons/chevron_right.svg" alt="arrow_right" />
       </div>
       {error && (
