@@ -1,8 +1,8 @@
 import React from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useState, useEffect } from "react";
 import { useLogin } from "../../hooks/useLogin";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 export default function Login() {
   const [isError, setIsError] = useState("");
@@ -10,6 +10,10 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [obscurePassword, setObscurePassword] = useState("password");
   const { login, isPending, error } = useLogin();
+
+  useEffect(() => {
+    setIsError(error);
+  }, [error])
 
   const handleSubmit = (e) => {
     e.preventDefault();

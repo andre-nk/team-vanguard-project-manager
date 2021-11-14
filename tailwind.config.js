@@ -3,6 +3,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      margin: {
+        "68": "17rem",
+        "92": "24.5rem"
+      },
       colors: {
         "primary-active": "#70312D",
         "primary-border": "#F5CBC8",

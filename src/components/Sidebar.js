@@ -11,7 +11,7 @@ export default function Sidebar({ isSidebarActive }) {
       className={`h-screen flex flex-col justify-between top-0 left-0 bg-white-sub border-r border-black-border`}
     >
       <div>
-        <div className={isSidebarActive ? "px-6 block" : "px-2 mx-1 hidden lg:flex"}>
+        <div className={isSidebarActive ? "px-8 block" : "px-2 mx-1 hidden lg:flex"}>
           <img
             src={isSidebarActive ? "/logo-text.png" : "/logo-single.png"}
             width="280px"
@@ -24,11 +24,10 @@ export default function Sidebar({ isSidebarActive }) {
             <div className="flex items-center space-x-3.5 justify-start py-2 px-6 hover:bg-black-surface duration-200">
               <div className="relative inline-block">
                 <img
-                  className="inline-block object-cover w-10 h-9 rounded-md bg-primary-surface"
+                  className="inline-block object-cover w-9 h-9 rounded-md bg-primary-surface"
                   src={user.photoURL}
                   alt="profile"
                 />
-                <span className="absolute -bottom-1 -right-1 inline-block w-3 h-3 bg-success-light border-2 border-tertiary-border rounded-full"></span>
               </div>
               <p className={`${isSidebarActive ? "text-caption" : "hidden"}`}>
                 {user.displayName}
@@ -38,11 +37,10 @@ export default function Sidebar({ isSidebarActive }) {
             <div className="flex items-center space-x-3.5 justify-start py-2 px-6 hover:bg-black-surface duration-200">
               <div className="relative inline-block">
                 <img
-                  className="inline-block object-cover w-10 h-9 rounded-md pt-1 px-1 pb-0 bg-primary-surface"
+                  className="inline-block object-cover w-9 h-9 rounded-md pt-1 px-1 pb-0 bg-primary-surface"
                   src="https://avatars.dicebear.com/api/micah/seed.svg"
                   alt="profile"
                 />
-                <span className="absolute -bottom-1 -right-1 inline-block w-3 h-3 bg-success-light border-2 border-tertiary-border rounded-full"></span>
               </div>
               <p className="text-caption">Jung Eunbi</p>
             </div>
