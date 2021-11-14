@@ -10,18 +10,7 @@ import Register from "./pages/register/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
 import { Menu, Transition } from "@headlessui/react";
 import { useAuthContext } from "./hooks/useAuthContext";
-<<<<<<< HEAD
 import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
-=======
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  Redirect,
-  useHistory,
-  Link,
-} from "react-router-dom";
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -42,10 +31,7 @@ function App() {
               {!user && <Redirect to="/login" />}
               {user && (
                 <div className="flex lg:block">
-<<<<<<< HEAD
                   {/* MOBILE */}
-=======
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
                   <div
                     className={`flex fixed top-0 z-40 ${
                       isSidebarOpen ? "w-full" : "w-0"
@@ -67,7 +53,6 @@ function App() {
                       <span className="opacity-0 w-full h-full bg-black-main"></span>
                     </div>
                   </div>
-<<<<<<< HEAD
 
                   <div className="w-full flex">
                     <div
@@ -95,31 +80,6 @@ function App() {
                           <img src="/quill-icons/plus.svg" alt="add" />
                           <p className="text-caption">New project</p>
                         </Link>
-=======
-                  <div className="w-full flex">
-                    <div
-                      className={`hidden lg:flex ${
-                        isSidebarOpen ? "w-3/12" : "w-20"
-                      } duration-200`}
-                    >
-                      <Sidebar isSidebarActive={isSidebarOpen} />
-                    </div>
-                    {/* MAIN */}
-                    <div className="w-full mx-6 lg:mx-8">
-                      <div className="flex-col w-full pt-8 pb-4 lg:space-y-4">
-                        <div className="flex justify-between items-center">
-                          <h2 className="text-heading-3 lg:text-heading-1 font-semibold">
-                            Dashboard
-                          </h2>
-                          <Link
-                            to="/create"
-                            className="flex items-center px-2.5 py-1.5 lg:px-3 lg:py-2 space-x-3 bg-white-main hover:bg-white-sub hover:shadow-sm duration-200 border border-black-border rounded-md"
-                          >
-                            <img src="/quill-icons/plus.svg" alt="add" />
-                            <p className="text-caption">New project</p>
-                          </Link>
-                        </div>
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
                       </div>
 
                       {/* LG */}
@@ -133,13 +93,6 @@ function App() {
                           <img src="/quill-icons/hamburger.svg" alt="menu" />
                         </button>
                         <p
-<<<<<<< HEAD
-                          onClick={() => {
-                            handleClick("To do");
-                          }}
-                          className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                            isTabActive === "To do"
-=======
                           onClick={() => {
                             handleClick("To do");
                           }}
@@ -169,38 +122,10 @@ function App() {
                           }}
                           className={`hover:text-black-main duration-200 cursor-pointer select-none ${
                             isTabActive === "On going"
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
                               ? "text-black-main font-medium"
                               : "text-gray-main font-light"
                           }`}
                         >
-<<<<<<< HEAD
-                          To do
-                        </p>
-                        <p
-                          onClick={() => {
-                            handleClick("Not started");
-                          }}
-                          className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                            isTabActive === "Not started"
-                              ? "text-black-main font-medium"
-                              : "text-gray-main font-light"
-                          }`}
-                        >
-                          Not started
-                        </p>
-                        <p
-                          onClick={() => {
-                            handleClick("On going");
-                          }}
-                          className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                            isTabActive === "On going"
-                              ? "text-black-main font-medium"
-                              : "text-gray-main font-light"
-                          }`}
-                        >
-=======
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
                           On going
                         </p>
                         <p
@@ -315,14 +240,9 @@ function App() {
 
                       <Dashboard />
                     </div>
-<<<<<<< HEAD
 
                     {/* CHATBAR */}
                     <div className="fixed top-0 right-0 bg-white-main w-3/12 h-screen hidden lg:block">
-=======
-                    {/* CHATBAR */}
-                    <div className="w-5/12 hidden lg:block">
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
                       <Chatbar isSidebarOpen={isSidebarOpen} />
                     </div>
                   </div>
@@ -333,10 +253,7 @@ function App() {
               {!user && <Redirect to="/login" />}
               {user && (
                 <div className="flex lg:block">
-<<<<<<< HEAD
                   {/* MOBILE */}
-=======
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
                   <div
                     className={`flex fixed top-0 z-40 ${
                       isSidebarOpen ? "w-full" : "w-0"
@@ -358,25 +275,16 @@ function App() {
                       <span className="opacity-0 w-full h-full bg-black-main"></span>
                     </div>
                   </div>
-<<<<<<< HEAD
 
                   <div className="w-full flex">
                     <div
                       className={`hidden lg:flex fixed top-0 left-0 bg-white-main ${
                         isSidebarOpen ? "w-2/12" : "w-12"
                       } duration-500`}
-=======
-                  <div className="w-full flex">
-                    <div
-                      className={`hidden h-screen lg:flex ${
-                        isSidebarOpen ? "w-3/12" : "w-20"
-                      } duration-200`}
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
                     >
                       <Sidebar isSidebarActive={isSidebarOpen} />
                     </div>
 
-<<<<<<< HEAD
                     {/* MAIN */}
                     <div
                       className={`w-full mx-6 ${
@@ -416,20 +324,6 @@ function App() {
 
                     {/* CHATBAR */}
                     <div className="fixed top-0 right-0 bg-white-main w-3/12 h-screen hidden lg:block">
-=======
-                    <div className="w-full">
-                      <Create />
-                      <button
-                        className="p-3 rounded-md hover:bg-black-surface duration-200"
-                        onClick={() => {
-                          setIsSidebarOpen(!isSidebarOpen);
-                        }}
-                      ></button>
-                    </div>
-
-                    {/* CHATBAR */}
-                    <div className="w-4/12 hidden lg:block">
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
                       <Chatbar isSidebarOpen={isSidebarOpen} />
                     </div>
                   </div>

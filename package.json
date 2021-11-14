@@ -17,10 +17,7 @@
     "react-icons": "^4.3.1",
     "react-router-dom": "5.2",
     "react-scripts": "^3.4.4",
-<<<<<<< HEAD
     "react-select": "^5.2.1",
-=======
->>>>>>> 08ec140c50c3aad5bef729fad1caff5e8c7d670f
     "react-tooltip": "^4.2.21",
     "web-vitals": "^1.1.2"
   },

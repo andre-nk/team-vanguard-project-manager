@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import Select from "react-select";
 import { useHistory } from "react-router-dom";
+import { timestamp } from "../../firebase/config";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { timestamp, firestoreTools } from "../../firebase/config";
 
 export default function Create() {
   const { documents } = useCollection("users");
