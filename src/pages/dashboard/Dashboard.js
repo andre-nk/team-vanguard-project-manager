@@ -15,7 +15,7 @@ export default function Dashboard({isSidebarOpen}) {
           <Chatbar />
         </div>
       ) : (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center lg:justify-start">
           {error && <p className="text-caption text-danger-light">{error}</p>}
           <ProjectList projects={documents} isSidebarOpen={isSidebarOpen}/>
         </div>

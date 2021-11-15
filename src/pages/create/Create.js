@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
 import Select from "react-select";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { timestamp } from "../../firebase/config";
 import { useFirestore } from "../../hooks/useFirestore";
@@ -8,8 +8,8 @@ import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Create() {
-  const { documents } = useCollection("users");
   const { user } = useAuthContext();
+  const { documents } = useCollection("users");
   const { addDocument, response } = useFirestore("projects");
   const history = useHistory();
 
@@ -20,12 +20,23 @@ export default function Create() {
     { value: "completed", label: "Completed" },
   ];
 
+  const [users, setUsers] = useState([]);
   const [projectName, setProjectName] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
   const [projectCategory, setProjectCategory] = useState("");
   const [projectDueDate, setProjectDueDate] = useState(null);
   const [projectHandler, setProjectHandler] = useState([]);
   const [formErrors, setFormErrors] = useState("");
+
+  useEffect(() => {
+    if (documents) {
+      setUsers(
+        documents.map((user) => {
+          return { value: { ...user, id: user.id }, label: user.displayName };
+        })
+      );
+    }
+  }, [documents]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,9 +45,17 @@ export default function Create() {
       setFormErrors("Please select a category");
     }
 
-    if (projectHandler.length  < 1) {
+    if (projectHandler.length < 1) {
       setFormErrors("Please select minimum of one handler");
     }
+
+    const projectHandlers = projectHandler.map((u) => {
+      return {
+        displayName: u.value.displayName,
+        photoURL: u.value.photoURL,
+        id: u.value.id,
+      };
+    });
 
     const project = {
       projectName,
@@ -45,11 +64,11 @@ export default function Create() {
       dueDate: timestamp.fromDate(new Date(projectDueDate)),
       comments: [],
       createdBy: user.uid,
-      projectHandler: projectHandler.map((handler) => handler.value),
-    }
+      projectHandlers,
+    };
 
     await addDocument(project);
-    if(!response.error){
+    if (!response.error) {
       history.push("/");
     }
   };
@@ -124,9 +143,7 @@ export default function Create() {
               onChange={(option) => {
                 setProjectHandler(option);
               }}
-              options={documents.map((user) => {
-                return { value: user.id, label: user.displayName };
-              })}
+              options={users}
               className="mt-2 mb-2"
               styles={{
                 control: (provided) => ({
@@ -186,7 +203,9 @@ export default function Create() {
           </button>
 
           <div className="mb-8">
-            {formErrors && <p className="text-caption text-danger-light">*{formErrors}</p>}
+            {formErrors && (
+              <p className="text-caption text-danger-light">*{formErrors}</p>
+            )}
           </div>
         </form>
       </div>
