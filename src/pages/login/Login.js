@@ -80,8 +80,8 @@ export default function Login() {
             <p className="font-light text-gray-main self-center py-8">
               Loading...
             </p>
-          ) : error ? (
-            <p className="font-light text-danger-light py-8">{error}</p>
+          ) : error || isError ? (
+            <p className="font-light text-danger-light py-8">{error || isError}</p>
           ) : (
             <button className=" bg-white-main hover:bg-black-surface border-black-border border rounded-md text-medium flex-1 px-4 py-3 duration-200 mb-8 mt-6">
               Sign in

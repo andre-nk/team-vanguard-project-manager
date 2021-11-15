@@ -8,9 +8,8 @@ export default function ProjectList({ projects, isSidebarOpen }) {
         {projects &&
           projects.map((project) => {
             return (
-              <Link to={`projects/${project.id}`}>
+              <Link to={`projects/${project.id}`} key={project.id}>
                 <div
-                  key={project.id}
                   className={`w-64 ${
                     isSidebarOpen ? "lg:w-56" : "lg:w-64 xl:w-72"
                   } transform hover:rotate-2 rounded-md duration-200`}
