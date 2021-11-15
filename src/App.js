@@ -23,7 +23,7 @@ function App() {
   };
 
   return (
-    <div className="">
+    <div className="debug-screens">
       {authIsReady && (
         <BrowserRouter>
           <Switch>
@@ -69,7 +69,7 @@ function App() {
                         isSidebarOpen ? "lg:ml-60 xl:ml-68" : "lg:ml-20"
                       } lg:mr-80 xl:mr-92 duration-500`}
                     >
-                      <div className="flex w-full pt-8 pb-4 lg:space-y-4 justify-between items-center">
+                      <div className="flex w-full pt-4 pb-4 lg:space-y-4 justify-between items-end">
                         <h2 className="text-heading-3 lg:text-heading-2 font-semibold">
                           Dashboard
                         </h2>
@@ -238,7 +238,7 @@ function App() {
                         </Transition>
                       </Menu>
 
-                      <Dashboard />
+                      <Dashboard isSidebarOpen={isSidebarOpen}/>
                     </div>
 
                     {/* CHATBAR */}

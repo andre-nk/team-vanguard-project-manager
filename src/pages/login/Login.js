@@ -21,8 +21,8 @@ export default function Login() {
   };
 
   return (
-    <div className="min-w-full h-screen bg-white-sub flex items-center justify-center">
-      <div className="py-8 px-8 bg-white-main rounded-lg shadow-xl flex-col justify-center items">
+    <div className="min-w-full h-screen bg-white-sub flex justify-center">
+      <div className="p-8 bg-white-main rounded-lg shadow-xl flex-col self-center justify-center items-center">
         <div className="flex justify-center items-center pb-6">
           <img src="/logo-text.png" width="156px" alt="logo" />
         </div>
@@ -95,9 +95,6 @@ export default function Login() {
               </span>
             </Link>
           </p>
-          {isError !== "" && (
-            <p className="font-light text-danger-light">{isError}</p>
-          )}
         </form>
       </div>
     </div>
