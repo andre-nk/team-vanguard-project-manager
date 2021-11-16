@@ -2,17 +2,27 @@ import React from "react";
 import ReactTooltip from "react-tooltip";
 import { useCollection } from "../hooks/useCollection";
 
-export default function OnlineUsers({ isSidebarOpen }) {
+export default function OnlineUsers({ isSidebarOpen, project }) {
   const { error, documents } = useCollection("users");
   const users = ["a", "b", "c", "d", "e", "f"];
 
   return (
-    <div className="flex flex-col w-full space-y-4">
-      <div className="flex min-w-full justify-between">
-        {
-          documents && <h2 className="font-medium text-subtitle">Members ({documents.length})</h2>
-        }
-        <img src="/quill-icons/chevron_right.svg" alt="arrow_right" />
+    <div className="flex flex-col space-y-4">
+      <div className="flex w-full justify-between">
+        {project ? (
+          <h2 className="font-medium text-body">
+            {project.projectName + " Comments"}
+          </h2>
+        ) : (
+          documents && (
+            <span className="flex w-full justify-between">
+              <h2 className="font-medium text-subtitle">
+                Members ({documents.length})
+              </h2>
+              <img src="/quill-icons/chevron_right.svg" alt="arrow_right" />
+            </span>
+          )
+        )}
       </div>
       {error && (
         <div className="flex space-x-4">
@@ -33,11 +43,15 @@ export default function OnlineUsers({ isSidebarOpen }) {
         </div>
       )}
       <div className="flex space-x-4">
-        {documents &&
+        {!project &&
+          documents &&
           documents.slice(0, 6).map((user) => {
             return (
               <div key={user.id}>
-                <div className="relative inline-block" data-tip={user.displayName}>
+                <div
+                  className="relative inline-block"
+                  data-tip={user.displayName}
+                >
                   <img
                     className={`inline-block object-cover ${
                       isSidebarOpen ? "w-9 h-9" : "w-10 h-10"
@@ -51,7 +65,12 @@ export default function OnlineUsers({ isSidebarOpen }) {
                     }`}
                   ></span>
                 </div>
-                <ReactTooltip className="bg-black-main opacity-50 px-0" place="bottom" type="dark" effect="float"/>
+                <ReactTooltip
+                  className="bg-black-main opacity-50 px-0"
+                  place="bottom"
+                  type="dark"
+                  effect="float"
+                />
               </div>
             );
           })}
