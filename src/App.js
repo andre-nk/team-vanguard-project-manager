@@ -18,7 +18,7 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="debug-screens">
+    <div>
       {authIsReady && (
         <BrowserRouter>
           <Switch>
