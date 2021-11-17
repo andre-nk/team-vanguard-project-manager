@@ -16,7 +16,7 @@ function App() {
   const { user, authIsReady } = useAuthContext();
   const [isChatMode, setIsChatMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isTabActive, setIsTabActive] = useState("To do");
+  const [isTabActive, setIsTabActive] = useState("Graphic Design");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleClick = (tab) => {
@@ -89,7 +89,7 @@ function App() {
                         </div>
 
                         {/* LG */}
-                        <div className="space-x-16 hidden lg:flex items-center">
+                        <div className={`${isSidebarOpen ? "space-x-10" : "space-x-16"} hidden lg:flex items-center`}>
                           <button
                             className="p-3 rounded-md hover:bg-black-surface duration-200"
                             onClick={() => {
@@ -100,51 +100,51 @@ function App() {
                           </button>
                           <p
                             onClick={() => {
-                              handleClick("To do");
+                              handleClick("Graphic Design");
                             }}
                             className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                              isTabActive === "To do"
+                              isTabActive === "Graphic Design"
                                 ? "text-black-main font-medium"
                                 : "text-gray-main font-light"
                             }`}
                           >
-                            To do
+                            Graphic Design
                           </p>
                           <p
                             onClick={() => {
-                              handleClick("Not started");
+                              handleClick("UI/UX Design");
                             }}
                             className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                              isTabActive === "Not started"
+                              isTabActive === "UI/UX Design"
                                 ? "text-black-main font-medium"
                                 : "text-gray-main font-light"
                             }`}
                           >
-                            Not started
+                            UI/UX Design
                           </p>
                           <p
                             onClick={() => {
-                              handleClick("On going");
+                              handleClick("Web Development");
                             }}
                             className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                              isTabActive === "On going"
+                              isTabActive === "Web Development"
                                 ? "text-black-main font-medium"
                                 : "text-gray-main font-light"
                             }`}
                           >
-                            On going
+                            Web Development
                           </p>
                           <p
                             onClick={() => {
-                              handleClick("Completed");
+                              handleClick("Mobile Development");
                             }}
                             className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                              isTabActive === "Completed"
+                              isTabActive === "Mobile Development"
                                 ? "text-black-main font-medium"
                                 : "text-gray-main font-light"
                             }`}
                           >
-                            Completed
+                            Mobile Development
                           </p>
                         </div>
 
@@ -189,12 +189,14 @@ function App() {
                                     className={`px-4 py-3 font-caption text-black-main flex justify-start ${
                                       active && "bg-black-surface duration-200"
                                     } ${
-                                      isTabActive === "To do" &&
+                                      isTabActive === "Graphic Design" &&
                                       "font-medium bg-black-border"
                                     }`}
-                                    onClick={() => handleClick("To do")}
+                                    onClick={() =>
+                                      handleClick("Graphic Design")
+                                    }
                                   >
-                                    To do
+                                    Graphic Design
                                   </button>
                                 )}
                               </Menu.Item>
@@ -204,12 +206,12 @@ function App() {
                                     className={`px-4 py-3 font-caption text-black-main flex justify-start ${
                                       active && "bg-black-surface duration-200"
                                     } ${
-                                      isTabActive === "Not started" &&
+                                      isTabActive === "UI/UX Design" &&
                                       "font-medium bg-black-border"
                                     }`}
-                                    onClick={() => handleClick("Not started")}
+                                    onClick={() => handleClick("UI/UX Design")}
                                   >
-                                    Not started
+                                    UI/UX Design
                                   </button>
                                 )}
                               </Menu.Item>
@@ -219,12 +221,14 @@ function App() {
                                     className={`px-4 py-3 font-caption text-black-main flex justify-start ${
                                       active && "bg-black-surface duration-200"
                                     } ${
-                                      isTabActive === "On going" &&
+                                      isTabActive === "Web Development" &&
                                       "font-medium bg-black-border"
                                     }`}
-                                    onClick={() => handleClick("On going")}
+                                    onClick={() =>
+                                      handleClick("Web Development")
+                                    }
                                   >
-                                    On going
+                                    Web Development
                                   </button>
                                 )}
                               </Menu.Item>
@@ -234,12 +238,14 @@ function App() {
                                     className={`px-4 py-3 font-caption text-black-main flex justify-start ${
                                       active && "bg-black-surface duration-200"
                                     } ${
-                                      isTabActive === "Completed" &&
+                                      isTabActive === "Mobile Development" &&
                                       "font-medium bg-black-border"
                                     }`}
-                                    onClick={() => handleClick("Completed")}
+                                    onClick={() =>
+                                      handleClick("Mobile Development")
+                                    }
                                   >
-                                    Completed
+                                    Mobile Development
                                   </button>
                                 )}
                               </Menu.Item>
@@ -247,7 +253,9 @@ function App() {
                           </Transition>
                         </Menu>
 
-                        <Dashboard isSidebarOpen={isSidebarOpen} />
+                        <div className="w-full h-full">
+                          <Dashboard isSidebarOpen={isSidebarOpen} />
+                        </div>
                       </div>
                     )}
 
@@ -385,126 +393,6 @@ function App() {
                           isSidebarOpen ? "lg:ml-60 xl:ml-68" : "lg:ml-20"
                         } lg:mr-80 xl:mr-92 duration-500`}
                       >
-                        <div className="flex w-full pt-8 pb-4 lg:space-y-4 justify-between items-center">
-                          {/* DESKTOP */}
-                          <div className="hidden lg:flex w-full justify-between items-center">
-                            <div className="space-x-8 flex">
-                              <button
-                                className="p-3 rounded-md hover:bg-black-surface duration-200"
-                                onClick={() => {
-                                  setIsSidebarOpen(!isSidebarOpen);
-                                }}
-                              >
-                                <img
-                                  src="/quill-icons/hamburger.svg"
-                                  alt="menu"
-                                />
-                              </button>
-                              <Link
-                                to="/"
-                                className="flex items-center px-3.5 py-1.5 lg:px-3 lg:py-2 space-x-3 bg-white-main hover:bg-white-sub hover:shadow-sm duration-200 border border-black-border rounded-md"
-                              >
-                                <p className="text-caption">Back</p>
-                              </Link>
-                            </div>
-                            <div className="space-x-4 flex">
-                              <button className="flex items-center px-3 py-1.5 lg:px-3 lg:py-2 bg-white-main hover:bg-danger-surface hover:shadow-sm duration-200 border border-black-border hover:border-danger-light rounded-md">
-                                <img
-                                  src="/quill-icons/delete.svg"
-                                  alt="archive"
-                                />
-                              </button>
-                              <button className="flex items-center px-3 py-1.5 lg:px-3 lg:py-2 bg-white-main hover:bg-white-sub hover:shadow-sm duration-200 border border-black-border rounded-md">
-                                <img
-                                  src="/quill-icons/archive.svg"
-                                  alt="archive"
-                                />
-                              </button>
-                              <button className="flex items-center px-3.5 py-1.5 lg:px-4 lg:py-2 bg-white-main hover:bg-white-sub hover:shadow-sm duration-200 border border-black-border rounded-md">
-                                <p className="text-caption">Mark as done</p>
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* MOBILE */}
-                          <div className="flex lg:hidden w-full justify-between items-center">
-                            <Link
-                              to="/"
-                              className="flex lg:hidden items-center px-3.5 py-1.5 lg:px-3 lg:py-2 space-x-3 bg-white-main hover:bg-white-sub hover:shadow-sm duration-200 border border-black-border rounded-md"
-                            >
-                              <p className="text-caption">Back</p>
-                            </Link>
-                            <Menu>
-                              <Menu.Button
-                                className="p-3 rounded-md hover:bg-black-surface duration-200 outline-none"
-                                onClick={() => {
-                                  setIsMenuOpen(!isMenuOpen);
-                                }}
-                              >
-                                <BsFilterSquare size={20} />
-                              </Menu.Button>
-                              <Transition
-                                as={Fragment}
-                                enter="transition ease-out duration-100"
-                                enterFrom="transform opacity-0 scale-95"
-                                enterTo="transform opacity-100 scale-100"
-                                leave="transition ease-in duration-75"
-                                leaveFrom="transform opacity-100 scale-100"
-                                leaveTo="transform opacity-0 scale-95"
-                              >
-                                <Menu.Items
-                                  className={`z-50 absolute origin-top-right right-6 top-20 outline-none rounded-md bg-white-main border border-black-border w-56 shadow-xl flex flex-col`}
-                                >
-                                  <Menu.Item>
-                                    {({ active }) => (
-                                      <button
-                                        className={`px-4 py-3 font-caption text-black-main flex space-x-3.5 items-center justify-start ${
-                                          active &&
-                                          "bg-danger-surface duration-200"
-                                        }`}
-                                      >
-                                        <img
-                                          src="/quill-icons/delete.svg"
-                                          alt="delete"
-                                        />
-                                        <p>Delete</p>
-                                      </button>
-                                    )}
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    {({ active }) => (
-                                      <button
-                                        className={`px-4 py-3 font-caption text-black-main flex space-x-3.5 items-center justify-start ${
-                                          active &&
-                                          "bg-black-surface duration-200"
-                                        }`}
-                                      >
-                                        <img
-                                          src="/quill-icons/archive.svg"
-                                          alt="archive"
-                                        />
-                                        <p>Archive</p>
-                                      </button>
-                                    )}
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    {({ active }) => (
-                                      <button
-                                        className={`px-4 py-3 font-caption text-black-main flex justify-start ${
-                                          active &&
-                                          "bg-black-surface duration-200"
-                                        }`}
-                                      >
-                                        Mark as done
-                                      </button>
-                                    )}
-                                  </Menu.Item>
-                                </Menu.Items>
-                              </Transition>
-                            </Menu>
-                          </div>
-                        </div>
-
                         <Project />
                       </div>
                     )}

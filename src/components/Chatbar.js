@@ -57,7 +57,7 @@ export default function Chatbar({ isSidebarOpen }) {
               type="text"
               name="newComment"
               id="newComment"
-              className="w-full outline-none text-caption border focus:border-primary-border border-black-border rounded-md flex-1 px-4 py-3 duration-200"
+              className="w-full mt-3 outline-none text-caption border focus:border-primary-border border-black-border rounded-md flex-1 px-4 py-3 duration-200"
               placeholder="Add a project comment..."
               value={newComment}
               onChange={(e) => {
@@ -94,8 +94,8 @@ export default function Chatbar({ isSidebarOpen }) {
                     <p className="text-xs font-light text-gray-main mt-2">
                       {
                         isToday(comment.createdAt.toDate()) === true
-                        ? comment.createdAt.toDate().toTimeString().substring(0, 8)
-                        : comment.createdAt.toDate().toDateString(), comment.createdAt.toDate().toTimeString().substring(0, 5)
+                        ? comment.createdAt.toDate().toTimeString().substring(0, 5)
+                        : comment.createdAt.toDate().toDateString() + ", " + comment.createdAt.toDate().toTimeString().substring(0, 5)
                       }
                     </p>
                   </div>

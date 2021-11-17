@@ -1,5 +1,4 @@
 import React from "react";
-import ReactTooltip from "react-tooltip";
 import { useCollection } from "../hooks/useCollection";
 
 export default function OnlineUsers({ isSidebarOpen, project }) {
@@ -7,7 +6,7 @@ export default function OnlineUsers({ isSidebarOpen, project }) {
   const users = ["a", "b", "c", "d", "e", "f"];
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col">
       <div className="flex w-full justify-between">
         {project ? (
           <h2 className="font-medium text-body">
@@ -19,7 +18,6 @@ export default function OnlineUsers({ isSidebarOpen, project }) {
               <h2 className="font-medium text-subtitle">
                 Members ({documents.length})
               </h2>
-              <img src="/quill-icons/chevron_right.svg" alt="arrow_right" />
             </span>
           )
         )}
@@ -42,20 +40,18 @@ export default function OnlineUsers({ isSidebarOpen, project }) {
           })}
         </div>
       )}
-      <div className="flex space-x-4">
+      <div className="flex flex-col w-full space-y-4 mt-6">
         {!project &&
           documents &&
-          documents.slice(0, 6).map((user) => {
+          documents.map((user) => {
             return (
-              <div key={user.id}>
-                <div
-                  className="relative inline-block"
-                  data-tip={user.displayName}
-                >
+              <div
+                key={user.id}
+                className="w-full flex justify-start items-center space-x-4 hover:bg-black-surface duration-200 rounded-md"
+              >
+                <div className="relative inline-block">
                   <img
-                    className={`inline-block object-cover ${
-                      isSidebarOpen ? "w-9 h-9" : "w-10 h-10"
-                    } rounded-md pb-0 bg-primary-surface object-fill`}
+                    className={`inline-block object-cover w-10 h-10 rounded-md pb-0 bg-primary-surface`}
                     src={user.photoURL}
                     alt={`profile-${user.id}`}
                   />
@@ -65,12 +61,7 @@ export default function OnlineUsers({ isSidebarOpen, project }) {
                     }`}
                   ></span>
                 </div>
-                <ReactTooltip
-                  className="bg-black-main opacity-50 px-0"
-                  place="bottom"
-                  type="dark"
-                  effect="float"
-                />
+                <p className="text-black-main text-caption">{user.displayName}</p>
               </div>
             );
           })}

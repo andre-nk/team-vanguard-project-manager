@@ -48,14 +48,14 @@ export default function Register() {
           Register your account
         </h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>
-          <div className="border rounded-md px-4 py-3.5 mb-4 outline-none hover:border-primary-border border-black-border">
+          <div className="border rounded-md px-4 py-3.5 mb-4 outline-none cursor-pointer hover:border-primary-border border-black-border">
             <label>
               <input
                 type="file"
                 onChange={handleFileInput}
                 className="hidden"
               />
-              <p className="font-light text-gray-main text-caption text-center select-none duration-200">
+              <p className="font-light cursor-pointer text-gray-main text-caption text-center select-none duration-200">
                 {
                   profilePicture !== null
                   ? profilePicture.name.length >= 25

@@ -13,7 +13,7 @@ export default function ProjectSummary({ project }) {
           src={`/covers/Cover_${Math.floor(Math.random() * 9) + 1}.png`}
           alt=""
         />
-        <span className="absolute left-5 -bottom-5 -space-x-4 inline-block">
+        <span className="absolute left-5 -bottom-5 flex -space-x-4">
           {project.projectHandlers.length <= 8
             ? project.projectHandlers.map((handler) => {
                 return (

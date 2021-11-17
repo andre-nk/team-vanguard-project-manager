@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 export default function ProjectList({ projects, isSidebarOpen }) {
   return (
     <div className="flex">
-      <div className="grid grid-flow-row gap-y-8 md:grid-cols-2 lg:grid-flow-col md:gap-12">
+      <div className="grid grid-flow-row gap-y-8 md:grid-cols-2 lg:grid-cols-3 md:gap-12">
         {projects &&
-          projects.map((project) => {
+          projects.map((project, index) => {
             return (
               <Link to={`projects/${project.id}`} key={project.id}>
                 <div
@@ -18,7 +18,7 @@ export default function ProjectList({ projects, isSidebarOpen }) {
                     <img
                       className="bg-primary-surface object-fill w-full h-36 rounded-md"
                       src={`/covers/Cover_${
-                        Math.floor(Math.random() * 9) + 1
+                        index + 1
                       }.png`}
                       alt=""
                     />
