@@ -14,10 +14,10 @@ export default function Create() {
   const history = useHistory();
 
   const categories = [
-    { value: "graphic_design", label: "Graphic Design" },
-    { value: "uiux_design", label: "UI/UX Design" },
-    { value: "web_dev", label: "Web Development" },
-    { value: "mobile_dev", label: "Mobile Development" },
+    { value: "Graphic", label: "Graphic" },
+    { value: "UI/UX", label: "UI/UX" },
+    { value: "Web Dev", label: "Web Dev" },
+    { value: "Mobile Dev", label: "Mobile Dev" },
   ];
 
   const [users, setUsers] = useState([]);

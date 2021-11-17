@@ -26,7 +26,7 @@ export default function OnlineUsers({ isSidebarOpen, project }) {
         <div className="flex space-x-4">
           {users.map((user) => {
             return (
-              <div className="relative inline-block">
+              <div className="relative inline-block" key={user}>
                 <img
                   className={`inline-block object-cover ${
                     isSidebarOpen ? "w-12 h-9" : "w-10 h-10"

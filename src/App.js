@@ -1,27 +1,21 @@
 import React from "react";
+import { useState } from "react";
+import Helmet from "react-helmet";
+import Favicon from "react-favicon";
 import Login from "./pages/login/Login";
 import Create from "./pages/create/Create";
 import Sidebar from "./components/Sidebar";
 import Chatbar from "./components/Chatbar";
-import { useState, Fragment } from "react";
 import Project from "./pages/project/Project";
-import { BsFilterSquare } from "react-icons/bs";
 import Register from "./pages/register/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
-import { Menu, Transition } from "@headlessui/react";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
   const [isChatMode, setIsChatMode] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isTabActive, setIsTabActive] = useState("Graphic Design");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const handleClick = (tab) => {
-    setIsTabActive(tab);
-  };
 
   return (
     <div className="debug-screens">
@@ -29,6 +23,19 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
+              <Helmet>
+                <title>Dashboard - Team Vanguard</title>
+                <link
+                  rel="icon"
+                  type="image/png"
+                  href="favicon.ico"
+                  sizes="16x16"
+                />
+                <meta
+                  name="Dashboard"
+                  content="Team Vanguard Project Management System"
+                />
+              </Helmet>
               {!user && <Redirect to="/login" />}
               {user && (
                 <div className="flex lg:block">
@@ -70,193 +77,10 @@ function App() {
                         <Chatbar />
                       </div>
                     ) : (
-                      <div
-                        className={`w-full mx-6 ${
-                          isSidebarOpen ? "lg:ml-60 xl:ml-68" : "lg:ml-20"
-                        } lg:mr-80 xl:mr-92 duration-500`}
-                      >
-                        <div className="flex w-full pt-8 lg:pt-4 pb-4 lg:space-y-4 justify-between items-end">
-                          <h2 className="text-heading-3 lg:text-heading-2 font-semibold">
-                            Dashboard
-                          </h2>
-                          <Link
-                            to="/create"
-                            className="flex items-center px-2.5 py-1.5 lg:px-3 lg:py-2 space-x-3 bg-white-main hover:bg-white-sub hover:shadow-sm duration-200 border border-black-border rounded-md"
-                          >
-                            <img src="/quill-icons/plus.svg" alt="add" />
-                            <p className="text-caption">New project</p>
-                          </Link>
-                        </div>
-
-                        {/* LG */}
-                        <div className={`${isSidebarOpen ? "space-x-10" : "space-x-16"} hidden lg:flex items-center`}>
-                          <button
-                            className="p-3 rounded-md hover:bg-black-surface duration-200"
-                            onClick={() => {
-                              setIsSidebarOpen(!isSidebarOpen);
-                            }}
-                          >
-                            <img src="/quill-icons/hamburger.svg" alt="menu" />
-                          </button>
-                          <p
-                            onClick={() => {
-                              handleClick("Graphic Design");
-                            }}
-                            className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                              isTabActive === "Graphic Design"
-                                ? "text-black-main font-medium"
-                                : "text-gray-main font-light"
-                            }`}
-                          >
-                            Graphic Design
-                          </p>
-                          <p
-                            onClick={() => {
-                              handleClick("UI/UX Design");
-                            }}
-                            className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                              isTabActive === "UI/UX Design"
-                                ? "text-black-main font-medium"
-                                : "text-gray-main font-light"
-                            }`}
-                          >
-                            UI/UX Design
-                          </p>
-                          <p
-                            onClick={() => {
-                              handleClick("Web Development");
-                            }}
-                            className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                              isTabActive === "Web Development"
-                                ? "text-black-main font-medium"
-                                : "text-gray-main font-light"
-                            }`}
-                          >
-                            Web Development
-                          </p>
-                          <p
-                            onClick={() => {
-                              handleClick("Mobile Development");
-                            }}
-                            className={`hover:text-black-main duration-200 cursor-pointer select-none ${
-                              isTabActive === "Mobile Development"
-                                ? "text-black-main font-medium"
-                                : "text-gray-main font-light"
-                            }`}
-                          >
-                            Mobile Development
-                          </p>
-                        </div>
-
-                        {/* SM */}
-                        <Menu>
-                          <div className="w-full flex lg:hidden justify-between items-center mb-4">
-                            <button
-                              className="p-3 rounded-md hover:bg-black-surface duration-200"
-                              onClick={() => {
-                                setIsSidebarOpen(!isSidebarOpen);
-                              }}
-                            >
-                              <img
-                                src="/quill-icons/hamburger.svg"
-                                alt="menu"
-                              />
-                            </button>
-                            <Menu.Button
-                              className="p-3 rounded-md hover:bg-black-surface duration-200 outline-none"
-                              onClick={() => {
-                                setIsMenuOpen(!isMenuOpen);
-                              }}
-                            >
-                              <BsFilterSquare size={20} />
-                            </Menu.Button>
-                          </div>
-                          <Transition
-                            as={Fragment}
-                            enter="transition ease-out duration-100"
-                            enterFrom="transform opacity-0 scale-95"
-                            enterTo="transform opacity-100 scale-100"
-                            leave="transition ease-in duration-75"
-                            leaveFrom="transform opacity-100 scale-100"
-                            leaveTo="transform opacity-0 scale-95"
-                          >
-                            <Menu.Items
-                              className={`z-50 absolute origin-top-right right-10 top-32 outline-none rounded-md bg-white-main border border-black-border w-56 shadow-xl flex flex-col`}
-                            >
-                              <Menu.Item>
-                                {({ active }) => (
-                                  <button
-                                    className={`px-4 py-3 font-caption text-black-main flex justify-start ${
-                                      active && "bg-black-surface duration-200"
-                                    } ${
-                                      isTabActive === "Graphic Design" &&
-                                      "font-medium bg-black-border"
-                                    }`}
-                                    onClick={() =>
-                                      handleClick("Graphic Design")
-                                    }
-                                  >
-                                    Graphic Design
-                                  </button>
-                                )}
-                              </Menu.Item>
-                              <Menu.Item>
-                                {({ active }) => (
-                                  <button
-                                    className={`px-4 py-3 font-caption text-black-main flex justify-start ${
-                                      active && "bg-black-surface duration-200"
-                                    } ${
-                                      isTabActive === "UI/UX Design" &&
-                                      "font-medium bg-black-border"
-                                    }`}
-                                    onClick={() => handleClick("UI/UX Design")}
-                                  >
-                                    UI/UX Design
-                                  </button>
-                                )}
-                              </Menu.Item>
-                              <Menu.Item>
-                                {({ active }) => (
-                                  <button
-                                    className={`px-4 py-3 font-caption text-black-main flex justify-start ${
-                                      active && "bg-black-surface duration-200"
-                                    } ${
-                                      isTabActive === "Web Development" &&
-                                      "font-medium bg-black-border"
-                                    }`}
-                                    onClick={() =>
-                                      handleClick("Web Development")
-                                    }
-                                  >
-                                    Web Development
-                                  </button>
-                                )}
-                              </Menu.Item>
-                              <Menu.Item>
-                                {({ active }) => (
-                                  <button
-                                    className={`px-4 py-3 font-caption text-black-main flex justify-start ${
-                                      active && "bg-black-surface duration-200"
-                                    } ${
-                                      isTabActive === "Mobile Development" &&
-                                      "font-medium bg-black-border"
-                                    }`}
-                                    onClick={() =>
-                                      handleClick("Mobile Development")
-                                    }
-                                  >
-                                    Mobile Development
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </Menu.Items>
-                          </Transition>
-                        </Menu>
-
-                        <div className="w-full h-full">
-                          <Dashboard isSidebarOpen={isSidebarOpen} />
-                        </div>
-                      </div>
+                      <Dashboard
+                        isSidebarOpen={isSidebarOpen}
+                        setIsSidebarOpen={setIsSidebarOpen}
+                      />
                     )}
 
                     {/* CHATBAR */}
@@ -284,6 +108,19 @@ function App() {
               )}
             </Route>
             <Route path="/create">
+              <Helmet>
+                <title>Create Project - Team Vanguard</title>
+                <link
+                  rel="icon"
+                  type="image/png"
+                  href="favicon.ico"
+                  sizes="16x16"
+                />
+                <meta
+                  name="Create Project"
+                  content="Team Vanguard Project Management System"
+                />
+              </Helmet>
               {!user && <Redirect to="/login" />}
               {user && (
                 <div className="flex lg:block">
@@ -420,10 +257,36 @@ function App() {
               )}
             </Route>
             <Route path="/login">
+              <Helmet>
+                <title>Login- Team Vanguard</title>
+                <link
+                  rel="icon"
+                  type="image/png"
+                  href="favicon.ico"
+                  sizes="16x16"
+                />
+                <meta
+                  name="Log in"
+                  content="Team Vanguard Project Management System"
+                />
+              </Helmet>
               {user && <Redirect to="/" />}
               <Login />
             </Route>
             <Route path="/register">
+              <Helmet>
+                <title>Register - Team Vanguard</title>
+                <link
+                  rel="icon"
+                  type="image/png"
+                  href="favicon.ico"
+                  sizes="16x16"
+                />
+                <meta
+                  name="Register"
+                  content="Team Vanguard Project Management System"
+                />
+              </Helmet>
               {user && <Redirect to="/" />}
               <Register />
             </Route>

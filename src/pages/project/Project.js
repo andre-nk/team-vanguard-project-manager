@@ -1,3 +1,4 @@
+import Helmet from "react-helmet";
 import { Link } from "react-router-dom";
 import { BsFilterSquare } from "react-icons/bs";
 import React, { useState, Fragment } from "react";
@@ -34,6 +35,16 @@ export default function Project() {
 
   return (
     <div>
+      {document && (
+        <Helmet>
+          <title>{document.projectName} - Team Vanguard</title>
+          <link rel="icon" type="image/png" href="favicon.ico" sizes="16x16" />
+          <meta
+            name="Create Project"
+            content="Team Vanguard Project Management System"
+          />
+        </Helmet>
+      )}
       <div className="flex w-full pt-8 pb-4 lg:space-y-4 justify-between items-center">
         {/* DESKTOP */}
         <div className="hidden lg:flex w-full justify-between items-center">

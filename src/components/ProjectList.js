@@ -17,9 +17,7 @@ export default function ProjectList({ projects, isSidebarOpen }) {
                   <div className="relative inline-block">
                     <img
                       className="bg-primary-surface object-fill w-full h-36 rounded-md"
-                      src={`/covers/Cover_${
-                        index + 1
-                      }.png`}
+                      src={`/covers/Cover_${index + 1}.png`}
                       alt=""
                     />
                     <span className="absolute left-2 -bottom-5 -space-x-3 inline-block">
@@ -29,6 +27,7 @@ export default function ProjectList({ projects, isSidebarOpen }) {
                               <img
                                 className="inline-block object-fill w-10 h-10 rounded-full border-2 border-white-sub bg-white-sub"
                                 src={handler.photoURL}
+                                key={handler.id}
                                 alt="profile"
                               />
                             );
@@ -36,13 +35,17 @@ export default function ProjectList({ projects, isSidebarOpen }) {
                         : project.projectHandlers.map((handler, index) => {
                             if (index === project.projectHandlers.length) {
                               return (
-                                <span className="inline-block object-fill w-10 h-10 rounded-full border-2 border-white-sub bg-white-sub">
+                                <span
+                                  key={"ending-avatar"}
+                                  className="inline-block object-fill w-10 h-10 rounded-full border-2 border-white-sub bg-white-sub"
+                                >
                                   +{project.projectHandlers.length - 8}
                                 </span>
                               );
                             } else {
                               return (
                                 <img
+                                  key={handler.id}
                                   className="inline-block object-fill w-10 h-10 rounded-full border-2 border-white-sub bg-white-sub"
                                   src={handler.photoURL}
                                   alt="profile"

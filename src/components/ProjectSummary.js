@@ -35,7 +35,9 @@ export default function ProjectSummary({ project }) {
             : project.projectHandlers.map((handler, index) => {
                 if (index === project.projectHandlers.length) {
                   return (
-                    <span className="inline-block object-fill w-12 h-12 rounded-full border-2 border-white-sub bg-white-sub">
+                    <span
+                      key={"ending-avatar"}
+                      className="inline-block object-fill w-12 h-12 rounded-full border-2 border-white-sub bg-white-sub">
                       +{project.projectHandlers.length - 8}
                     </span>
                   );
